@@ -9,7 +9,6 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
   const [bodyPart, setbodyPart] = useState("cuello");
   const [muscle, setMuscle] = useState("");
   const [equipment, setEquipment] = useState("");
-
   const filteredData = data.filter(function (element) {
     return (
       (filter
@@ -20,6 +19,21 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
       (equipment ? element.equipment === equipment : true)
     );
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+  function nextPage() {
+    
+    setCurrentPage((page) => page + 1);
+  }
+  
+  function prevPage() {
+    
+    setCurrentPage((page) => page - 1);
+  }
 
   const handleClick = (event) => {
     event.preventDefault(); // Evita que la página se recargue al hacer submit
@@ -52,7 +66,7 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
           value={bodyPart}
           onChange={(event) => setbodyPart(event.target.value)}>
           <option value='' disabled>
-            Partes del Cuerpo
+            Seleccione una sección del cuerpo
           </option>
           <option value='espalda'>espalda</option>
           <option value='cardio'>cardio</option>
@@ -71,7 +85,7 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
           value={muscle}
           onChange={(event) => setMuscle(event.target.value)}>
           <option value='' disabled>
-            Seleccione una parte del cuerpo
+            Seleccione un músculo del cuerpo
           </option>
           <option value='abductores'>abductores</option>
           <option value='abdominales'>abdominales</option>
@@ -101,7 +115,7 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
           value={equipment}
           onChange={(event) => setEquipment(event.target.value)}>
           <option value='' disabled>
-            Equipamiento
+            Seleccione un equipamiento
           </option>
           <option value='asistido'>asistido</option>
           <option value='banda elastica'>banda elastica</option>
@@ -151,10 +165,10 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
           <section className='section pt-4'>
             {/* <!-- Grid row --> */}
             <div className='row'>
-              {filteredData.length == 0 ? (
+              {currentItems.length == 0 ? (
                 <NotFound />
               ) : (
-                filteredData.map((item) => (
+                currentItems.map((item) => (
                   <CompanionCard
                     key={item.id}
                     bodyPart={item.bodyPart}
@@ -165,7 +179,13 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
                     id={item.id}
                   />
                 ))
-              )}
+              )
+              }
+              <divc className="paginationContainer d-flex align-items-center justify-content-center">
+                <button type="button" class="btn btn-secondary btn-sm" onClick={nextPage}>Anterior</button>
+    <span className="paginationPage btn">Page:{currentPage}</span>
+    <button type="button" class="btn btn-secondary btn-sm" onClick={nextPage}>Siguiente</button>
+    </divc>
             </div>
             {/* <!-- Grid row --> */}
           </section>
