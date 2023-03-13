@@ -3,7 +3,7 @@ Gym Companion
 
 * * *
 
-A clothing Ecommerce App, built with Vite, React, JavaScript, Bootstrap and CSS.
+A Gym companion built with React, JavaScript, Bootstrap and CSS.
 
 General Information
 -------------------
