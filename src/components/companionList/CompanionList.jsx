@@ -20,28 +20,30 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
     );
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const [lastPage, setLastPage] = useState(0);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   function nextPage() {
-    
+    setLastPage(filteredData.length);
     setCurrentPage((page) => page + 1);
   }
-  
+
   function prevPage() {
-    
+    setLastPage(filteredData.length);
     setCurrentPage((page) => page - 1);
   }
 
   const handleClick = (event) => {
     event.preventDefault(); // Evita que la página se recargue al hacer submit
-    setbodyPart("")
-    setMuscle("")
-    setEquipment("")
+    setbodyPart("");
+    setMuscle("");
+    setEquipment("");
+    setCurrentPage(1);
+    setLastPage(1);
   };
-
 
   useEffect(() => {}, [bodyPart, muscle, equipment]);
 
@@ -179,13 +181,24 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
                     id={item.id}
                   />
                 ))
-              )
-              }
-              <divc className="paginationContainer d-flex align-items-center justify-content-center">
-                <button type="button" class="btn btn-secondary btn-sm" onClick={nextPage}>Anterior</button>
-    <span className="paginationPage btn">Page:{currentPage}</span>
-    <button type="button" class="btn btn-secondary btn-sm" onClick={nextPage}>Siguiente</button>
-    </divc>
+              )}
+              <divc className='paginationContainer d-flex align-items-center justify-content-center'>
+                <button
+                  type='button'
+                  class='btn btn-secondary btn-sm'
+                  onClick={prevPage} disabled={currentPage === 0}>
+                  Anterior
+                </button>
+                <span className='paginationPage btn'>
+                  Page: {currentPage} de {filteredData.length}
+                </span>
+                <button
+                  type='button'
+                  class='btn btn-secondary btn-sm'
+                  onClick={nextPage} disabled={currentPage === filteredData.length}>
+                  Siguiente
+                </button>
+              </divc>
             </div>
             {/* <!-- Grid row --> */}
           </section>
