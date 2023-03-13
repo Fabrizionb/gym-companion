@@ -9,6 +9,14 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
   const [bodyPart, setbodyPart] = useState("cuello");
   const [muscle, setMuscle] = useState("");
   const [equipment, setEquipment] = useState("");
+
+  const [selectedBodyPart, setSelectedBodyPart] = useState("");
+  const [selectedTarget, setSelectedTarget] = useState("");
+  const [selectedEquipment, setSelectedEquipment] = useState("");
+
+  const bodyPartOptions = [...new Set(data.map(item => item.bodyPart))];
+
+
   const filteredData = data.filter(function (element) {
     return (
       (filter
@@ -20,8 +28,10 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
     );
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   const [lastPage, setLastPage] = useState(0);
+
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -158,7 +168,40 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
       </form>
       <div className='row pt-4 w-100'>
         {/* <!-- Sidebar --> */}
+        <select value={selectedBodyPart} onChange={(e) => setSelectedBodyPart(e.target.value)}>
+  <option value="">Selecciona Body Part</option>
+  {bodyPartOptions.map((option) => (
+    <option key={option} value={option}>
+      {option}
+    </option>
+  ))}
+</select>
 
+<select value={selectedTarget} onChange={(e) => setSelectedTarget(e.target.value)}>
+  <option value="">Selecciona Target</option>
+  {data
+    .filter((item) => item.bodyPart === selectedBodyPart)
+    .map((item) => item.target)
+    .filter((value, index, self) => self.indexOf(value) === index)
+    .map((option) => (
+      <option key={option} value={option}>
+        {option}
+      </option>
+    ))}
+</select>
+
+<select value={selectedEquipment} onChange={(e) => setSelectedEquipment(e.target.value)}>
+  <option value="">Selecciona Equipamiento</option>
+  {data
+    .filter((item) => item.bodyPart === selectedBodyPart && item.target === selectedTarget)
+    .map((item) => item.equipment)
+    .filter((value, index, self) => self.indexOf(value) === index)
+    .map((option) => (
+      <option key={option} value={option}>
+        {option}
+      </option>
+    ))}
+</select>
         {/* <!-- Sidebar --> */}
 
         {/* <!-- Content --> */}
@@ -190,7 +233,7 @@ const CompanionList = ({ data, sortMinus, sortPlus }) => {
                   Anterior
                 </button>
                 <span className='paginationPage btn'>
-                  Page: {currentPage} de {filteredData.length}
+                  Page: {currentPage} de { Math.round(filteredData.length / itemsPerPage)}
                 </span>
                 <button
                   type='button'
