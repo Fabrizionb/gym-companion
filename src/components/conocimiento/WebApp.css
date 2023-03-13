@@ -1,0 +1,53 @@
+.formWebApp {
+    background-color: #f9f9f9;
+}
+
+
+
+.contenidoWebApp{
+    min-height: 180px;
+}
+.input {
+    background-color: #4e5357;
+    outline: none;
+    border: 2px solid #212529;
+    border-radius: 6px;
+    width: 100%;
+    padding: 12px 10px 12px 10px;
+    color: #f0f3f5;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .input:active {
+    background-color: #212529!important;
+    color: #000912!important;
+  }
+  .input::placeholder {
+    color: #fff;
+  }
+  .button {
+    background-color: #4e5357;
+    color: #f0f3f5;
+    padding: 10px 26px 10px 26px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-weight: 600;
+    transition: all 0.3s linear;
+    border: 2px solid var(--color-btn-bg);
+    margin-bottom: 20px;
+  }
+
+  .button:hover {
+    background-color: #212529;
+    color: #f0f3f5;
+    transition: all 0.3s linear;
+    border: 2px solid var(--color-btn-border-hover);
+    
+  }
+
+  .webApp {
+    min-height: 65vh!important;
+  }

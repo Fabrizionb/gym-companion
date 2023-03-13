@@ -1,0 +1,72 @@
+.textColor {
+    color: #212529;
+  }
+  .formContainer {
+    color: rgb(132, 129, 129);
+    max-width: 100%;
+  }
+  .form {
+    max-width: 720px;
+    padding: 0px 40px 0 20px;
+  }
+  .input, textarea {
+    background-color: #4e5357;
+    outline: none;
+    border: 2px solid #212529;
+    border-radius: 6px;
+    width: 100%;
+    padding: 12px 10px 12px 10px;
+    color: #f0f3f5;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .input:active {
+    background-color: #212529;
+  }
+  label {
+    color: #212529;
+  }
+  .textarea {
+    background-color: #4e5357;
+    color: #f0f3f5!important;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    border: 2px solid #212529;
+    border-radius: 6px;
+    padding: 10px;
+  }
+  textarea::placeholder {
+    color: #f0f3f5;
+  }
+
+  .button {
+    background-color: #4e5357;
+    color: #f0f3f5;
+    padding: 10px 26px 10px 26px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-weight: 600;
+    transition: all 0.3s linear;
+    border: 2px solid var(--color-btn-bg);
+    margin-bottom: 20px;
+  }
+
+  .button:hover {
+    background-color: #212529;
+    color: #f0f3f5;
+    transition: all 0.3s linear;
+    border: 2px solid var(--color-btn-border-hover);
+    
+  }
+  label {
+    width: 100%;
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  .contact {
+    min-height: 75vh!important;
+  }

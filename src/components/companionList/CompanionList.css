@@ -1,0 +1,21 @@
+.button {
+    background-color: #3b3b3b!important;
+    margin: 0!important;
+   
+}
+
+.button:hover {
+    background-color: #212121!important;
+    color:#d81a3c!important;
+}
+
+.sidebar select, 
+.BotonCalcular {
+  display: block!important;
+  width: 100%!important;
+  margin: 0 auto!important;
+}
+
+.companion{
+  min-height: 75vh!important;
+}

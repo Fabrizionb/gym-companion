@@ -1,0 +1,9 @@
+.headLogo {
+    width: 550px;
+    padding:10px;
+    transform: rotateY(180deg);
+}
+
+.textHome {
+    align-self: center;
+}
