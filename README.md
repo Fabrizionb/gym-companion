@@ -11,7 +11,7 @@ General Information
 * * *
 
 *  Gym Companion is a project that uses a database of exercises and offers valuable information about our health.
-*  Link to [Demo](https://gym-kompanion.vercel.app/)
+*  Link to [Demo](https://gym-companion-alpha.vercel.app/companion)
 
 Technologies Used
 -----------------
@@ -71,5 +71,5 @@ Contact
 * * *
 
 [Linkedin](https://www.linkedin.com/in/fabrizio-bertolo/)
-& [GitHub](https://github.com/Fabrizionb/GymCompanion)
+& [GitHub](https://github.com/Fabrizionb/gym-companion)
 
